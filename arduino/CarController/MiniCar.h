@@ -17,8 +17,11 @@
 #define Ultra_Trig 12
 #define Ultra_Echo 13
 
+#define SERVO1_OFFSET -200
+#define SERVO2_OFFSET 0
+
 #define MAX_MOTOR_SPEEDUP 1
-#define MAX_SERVO_SPEEDUP 20
+#define MAX_SERVO_SPEEDUP 1
 
 class MiniCar
 {
@@ -32,6 +35,7 @@ private:
 public:
     MiniCar();
     ~MiniCar();
+    void init();
     void leftSpeed(int speed, int direction);
     void rightSpeed(int speed, int direction);
     void headMove(int degree, int index);

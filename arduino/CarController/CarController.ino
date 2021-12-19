@@ -9,6 +9,7 @@ int servoSpeed = 1300;
 void setup()
 {
   Serial.begin(9600);
+  car.init();
   t.every(10, cbk);
   t.every(5000, pseudoMessage);
 }
@@ -31,5 +32,5 @@ void pseudoMessage()
 
   servoSpeed = 3000-servoSpeed;
   car.headMove(servoSpeed, 1);
-  car.headMove(servoSpeed, 2);
+  // car.headMove(servoSpeed, 2);
 }

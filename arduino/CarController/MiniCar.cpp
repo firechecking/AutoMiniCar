@@ -2,6 +2,10 @@
 
 MiniCar::MiniCar()
 {
+}
+MiniCar::~MiniCar() {}
+void MiniCar::init()
+{
     motor1.setPin(MotorA_pin1, MotorA_pin2, MotorA_pinEn);
     motor2.setPin(MotorB_pin1, MotorB_pin2, MotorB_pinEn);
     servo1.attach(Servo1_pin);
@@ -17,7 +21,6 @@ MiniCar::MiniCar()
     head1DegreeTgt = 1500;
     head2DegreeTgt = 1500;
 }
-MiniCar::~MiniCar() {}
 int getSpeedUpValue(int crt, int tgt, int max_speedup)
 {
     if (tgt > crt)
@@ -47,19 +50,13 @@ void MiniCar::update()
     if (head1DegreeCurrent != head1DegreeTgt)
     {
         head1DegreeCurrent = getSpeedUpValue(head1DegreeCurrent, head1DegreeTgt, MAX_SERVO_SPEEDUP);
+        servo1.writeMicroseconds(head1DegreeCurrent + SERVO1_OFFSET);
     }
     if (head2DegreeCurrent != head2DegreeTgt)
     {
         head2DegreeCurrent = getSpeedUpValue(head2DegreeCurrent, head2DegreeTgt, MAX_SERVO_SPEEDUP);
+        servo2.writeMicroseconds(head2DegreeCurrent + SERVO2_OFFSET);
     }
-    // Serial.print(head1DegreeCurrent);
-    // Serial.print(" ");
-    // Serial.print(head2DegreeCurrent);
-    // Serial.println();
-    servo1.writeMicroseconds(head1DegreeCurrent);
-    servo2.writeMicroseconds(head2DegreeCurrent);
-    // servo1.write(90);
-    // servo2.write(90);
 }
 
 void MiniCar::leftSpeed(int speed, int direction)
@@ -107,23 +104,24 @@ void MiniCar::testServo()
 {
     int start = 1200;
     int end = 1800;
-    servo1.write(1500);
+    servo1.write(90);
+    servo2.write(90);
     delay(10);
-    for (int pos = 1500; pos <= end; pos++)
-    {
-        servo1.writeMicroseconds(pos);
-        delay(5);
-    }
-    for (int pos = end; pos >= start; pos--)
-    {
-        servo1.writeMicroseconds(pos);
-        delay(5);
-    }
-    for (int pos = start; pos <= 1500; pos++)
-    {
-        servo1.writeMicroseconds(pos);
-        delay(5);
-    }
+    // for (int pos = 1500; pos <= end; pos++)
+    // {
+    //     servo1.writeMicroseconds(pos);
+    //     delay(5);
+    // }
+    // for (int pos = end; pos >= start; pos--)
+    // {
+    //     servo1.writeMicroseconds(pos);
+    //     delay(5);
+    // }
+    // for (int pos = start; pos <= 1500; pos++)
+    // {
+    //     servo1.writeMicroseconds(pos);
+    //     delay(5);
+    // }
 }
 void MiniCar::testUltra()
 {
