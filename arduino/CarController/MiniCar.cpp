@@ -2,6 +2,8 @@
 
 MiniCar::MiniCar()
 {
+    // for (int i = 0; i < 1000; i++)
+    //     ultraDistance[i] = 0;
 }
 MiniCar::~MiniCar() {}
 void MiniCar::init()
@@ -10,6 +12,7 @@ void MiniCar::init()
     motor2.setPin(MotorB_pin1, MotorB_pin2, MotorB_pinEn);
     servo1.attach(Servo1_pin);
     servo2.attach(Servo2_pin);
+    ultraSensor.setPin(Ultra_Trig, Ultra_Echo);
 
     leftSpeedCurrent = 0;
     rightSpeedCurrent = 0;
@@ -35,7 +38,10 @@ int getSpeedUpValue(int crt, int tgt, int max_speedup)
 }
 void MiniCar::update()
 {
-    // 每隔10ms调用一次，限定点击加速度
+    // 每隔10ms调用一次，用于周期性测距，以及限定运动加速度
+    // unsigned distance = ultraSensor.measure();
+    // Serial.println(distance);
+
     if (leftSpeedCurrent != leftSpeedTgt)
     {
         leftSpeedCurrent = getSpeedUpValue(leftSpeedCurrent, leftSpeedTgt, MAX_MOTOR_SPEEDUP);
@@ -128,7 +134,6 @@ void MiniCar::testUltra()
     unsigned long dist_mm = ultraSensor.measure();
     if (dist_mm > 0)
     {
-        Serial.print("Distance is: "); // 输出结果至串口监视器
         Serial.print(dist_mm, DEC);    // 输出结果至串口监视器
         Serial.println("mm");          // 输出结果至串口监视器
     }

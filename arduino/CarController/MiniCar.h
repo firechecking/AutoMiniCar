@@ -31,6 +31,7 @@ private:
     UltraSensor ultraSensor;
     int leftSpeedCurrent, rightSpeedCurrent, leftSpeedTgt, rightSpeedTgt;
     int head1DegreeCurrent, head2DegreeCurrent, head1DegreeTgt, head2DegreeTgt;
+    // unsigned long ultraDistance[1000];
 
 public:
     MiniCar();
