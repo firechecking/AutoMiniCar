@@ -9,8 +9,8 @@ import time
 # for my_pic2
 ori_width = 1280
 ori_height = 720
-resize_width = 224
-resize_height = 224
+resize_width = 320
+resize_height = 180
 x1 = int(470 * (resize_width / ori_width)) # position x of the top-left corner of bounding box
 # y1 = int(120 * (resize_height / ori_height)) # position y of the top-left corner of bounding box
 y1 = 0

@@ -21,7 +21,7 @@
 #define SERVO2_OFFSET 0
 
 #define MAX_MOTOR_SPEEDUP 1
-#define MAX_SERVO_SPEEDUP 1
+#define MAX_SERVO_SPEEDUP 3
 
 class MiniCar
 {

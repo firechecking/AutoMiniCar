@@ -134,7 +134,8 @@ void MiniCar::testUltra()
     unsigned long dist_mm = ultraSensor.measure();
     if (dist_mm > 0)
     {
-        Serial.print(dist_mm, DEC);    // 输出结果至串口监视器
-        Serial.println("mm");          // 输出结果至串口监视器
+        Serial.print("distance=");
+        Serial.println(dist_mm, DEC);    // 输出结果至串口监视器
+//        Serial.println("mm");          // 输出结果至串口监视器
     }
 }

@@ -24,7 +24,7 @@ void DCMotor::setSpeed(int p, int d)
     digitalWrite(pinEn, 0);
     return;
   }
-  //开启电机
+  //开启电机q
   if (dir == 0)
   {
     digitalWrite(pin1, HIGH);
